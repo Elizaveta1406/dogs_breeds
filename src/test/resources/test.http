@@ -1,0 +1,57 @@
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "testov",
+  "password": "pass_test"
+}
+
+###
+# Авторизация
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+<> 2025-06-07T080549.200.json
+<> 2025-06-07T074000.200.json
+<> 2025-06-06T233900.200.json
+
+###
+GET http://localhost:8080/api/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0OTUzMDk0NCwiZXhwIjoxNzQ5NjE3MzQ0fQ.4T-UVpq4x_Ca8XCky0SWfdu7RoovNz0CjXANtS9DVM0
+
+###
+GET http://localhost:8080/api/users/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0OTUzMDMxNCwiZXhwIjoxNzQ5NjE2NzE0fQ.nsclfkvoGvVryRNUDE5CMZss6uU7TXlGu7fgeI2Pw9o
+
+
+### породы
+GET http://localhost:8080/api/breeds
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0OTUzNTE4MCwiZXhwIjoxNzQ5NjIxNTgwfQ.EnaVab6eBNBwlFD9NQK-iTdxiJ6S_7AOunIVUrBg1b8
+
+### Собаки
+GET http://localhost:8080/api/dogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0OTUzMDMxNCwiZXhwIjoxNzQ5NjE2NzE0fQ.nsclfkvoGvVryRNUDE5CMZss6uU7TXlGu7fgeI2Pw9o
+
+
+
+### собаки
+GET http://localhost:8080/api/dogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0OTQwNDUwNiwiZXhwIjoxNzQ5NDkwOTA2fQ.NKNV6EUlZaXV04sAaFmnF1CA7MH8dCL3qyEx7ZcT7Fs
+
+#POST http://localhost:8080/api/auth/register
+#Content-Type: application/json
+
+#{
+#  "username": "admin",
+#  "password": "admin"
+#}

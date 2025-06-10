@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/dog_breeds_db
+      SPRING_DATASOURCE_USERNAME: dog_breeds
+      SPRING_DATASOURCE_PASSWORD: dog_breeds
+    ports:
+      - "8080:8080"
+#    volumes:
+#      - .:/app
+#    command: ./gradlew build && java -jar build/libs/dog_breeds-1.0-SNAPSHOT.jar
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: dog_breeds_db
+      POSTGRES_USER: dog_breeds
+      POSTGRES_PASSWORD: dog_breeds
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./.docker/volumes/db:/var/lib/postgresql/data
+#      - db-data:/var/lib/postgresql/data
+
+#volumes:
+#  db-data:

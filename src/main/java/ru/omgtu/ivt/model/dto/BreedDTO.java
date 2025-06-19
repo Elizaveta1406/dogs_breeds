@@ -11,6 +11,9 @@ import lombok.Data;
 @Schema(description = "Порода собаки")
 @Data
 public class BreedDTO {
+    @Schema(description = "Идентификатор породы", example = "12")
+    private Long id;
+
     @Schema(description = "Название породы", example = "Ротвейлер")
     @NotBlank(message = "Breed name is required")
     private String name;
@@ -38,6 +41,7 @@ public class BreedDTO {
     // Конвертация DTO в сущность
     public static Breed toEntity(BreedDTO dto) {
         Breed breed = new Breed();
+        breed.setId(dto.getId());
         breed.setName(dto.name);
         breed.setOriginCountry(dto.originCountry);
         breed.setDescription(dto.description);
@@ -51,6 +55,7 @@ public class BreedDTO {
     // Конвертация сущность в DTO
     public static BreedDTO fromEntity(Breed breed) {
         BreedDTO dto = new BreedDTO();
+        dto.setId(breed.getId());
         dto.setName(breed.getName());
         dto.setOriginCountry(breed.getOriginCountry());
         dto.setDescription(breed.getDescription());

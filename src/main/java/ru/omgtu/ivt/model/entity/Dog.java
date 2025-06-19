@@ -53,6 +53,7 @@ public class Dog {
     }
 
     public static class DogBuilder {
+        private Long id;
         private String name;
         private Breed breed;
         private User owner;
@@ -60,6 +61,11 @@ public class Dog {
         private String color;
         private Double weight;
         private Gender gender;
+
+        public DogBuilder id(Long id) {
+            this.id = id;
+            return this;
+        }
 
         public DogBuilder name(String name) {
             this.name = name;

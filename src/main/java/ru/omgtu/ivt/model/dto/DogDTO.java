@@ -16,6 +16,9 @@ import java.time.LocalDate;
 @Schema(description = "Собака")
 @Data
 public class DogDTO {
+    @Schema(description = "Идентификатор собаки", example = "13")
+    private Long id;
+
     @Schema(description = "Кличка", example = "Дружок")
     @NotBlank(message = "Dog name is required")
     private String name;
@@ -43,6 +46,7 @@ public class DogDTO {
 
     public static DogDTO fromEntity(Dog dog) {
         DogDTO dto = new DogDTO();
+        dto.setId(dog.getId());
         dto.setName(dog.getName());
         dto.setBirthDate(dog.getBirthDate());
         dto.setColor(dog.getColor());
@@ -56,6 +60,7 @@ public class DogDTO {
 
     public static Dog toEntity(DogDTO dto) {
         return Dog.builder()
+                .id(dto.getId())
                 .name(dto.getName())
                 .gender(dto.getGender())
                 .birthDate(dto.getBirthDate())

@@ -1,5 +1,6 @@
 package ru.omgtu.ivt.config.security;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import ru.omgtu.ivt.security.JwtAuthenticationFilter;
@@ -31,13 +32,18 @@ public class SecurityConfig {
                                 "/api/auth/**",
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
-                                "/index.html",
+                                "/**.html",
+                                "/**.js",
+                                "/**.css",
                                 "/"
                         ).permitAll()
                         .requestMatchers("/error").permitAll()
                         .requestMatchers("/api/users/me" ).authenticated()
-                        .requestMatchers("/api/breeds/**").hasAnyRole("ADMIN", "MODERATOR")
+                        //.requestMatchers("/api/breeds/**").hasAnyRole("ADMIN", "MODERATOR")
                         .requestMatchers("/api/dogs/**").hasAnyRole("ADMIN", "MODERATOR", "USER")
+                        .requestMatchers(HttpMethod.GET, "/api/breeds/**").hasAnyRole("ADMIN", "MODERATOR", "USER")
+                        .requestMatchers(HttpMethod.DELETE, "/api/breeds/**").hasAnyRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/breeds/**").hasAnyRole("ADMIN", "MODERATOR")
                         //.requestMatchers("/api/users/**").hasAnyRole("ADMIN", "MODERATOR", "USER")
                         .anyRequest().authenticated()
                 )

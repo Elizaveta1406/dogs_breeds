@@ -61,6 +61,7 @@ public class BreedController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('USER', 'MODERATOR', 'ADMIN')")
     @ApiResponse(
             responseCode = "200",
             description = "Успешный ответ",
